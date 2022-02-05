@@ -35,7 +35,7 @@ export CARDANO_NODE_SOCKET_PATH=node-bft1/node.sock
 TXID0=$(cardano-cli byron transaction txid --tx tx0.tx)
 TXID1=$(cardano-cli byron transaction txid --tx tx1.tx)
 
-EPOCH=$(cardano-cli query tip --testnet-magic 42 | jq '.epoch')
+EPOCH=$(cardano-cli query tip --testnet-magic 42 | jq -r '.epoch')+1
 
 cardano-cli governance create-update-proposal \
             --out-file update-proposal-allegra \
