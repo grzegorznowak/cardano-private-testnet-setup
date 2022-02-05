@@ -11,7 +11,7 @@ wait_until_socket_detected()
 {
   echo "wait until socket is detected, socket: $CARDANO_NODE_SOCKET_PATH"
   while [ ! -S "$CARDANO_NODE_SOCKET_PATH" ]; do
-    echo "Sleep 10 secs"; sleep 10
+    echo "Sleep 5 secs"; sleep 5
   done
   echo "socket is detected"
 }
@@ -67,7 +67,7 @@ wait_for_epoch_to_advance()
   target_epoch_no=$(expr $epoch_no + $1)
   echo "Waiting until epoch $target_epoch_no"
   while [ $epoch_no -lt $target_epoch_no ]; do
-    echo "Sleep 30 secs"; sleep 30
+    echo "Sleep 5 secs"; sleep 5
     epoch_no=$(cardano-cli query tip --testnet-magic 42 | jq '.epoch')
   done
   echo "reached epoch: $epoch_no"
