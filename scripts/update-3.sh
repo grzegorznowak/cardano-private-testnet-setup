@@ -18,7 +18,6 @@ set -e
 
 if [ ! "$1" ]; then echo "update-3.sh: expects an <N> epoch argument"; exit; fi
 
-EPOCH=$1
 VERSION=3
 
 SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -35,6 +34,8 @@ export CARDANO_NODE_SOCKET_PATH=node-bft1/node.sock
 
 TXID0=$(cardano-cli byron transaction txid --tx tx0.tx)
 TXID1=$(cardano-cli byron transaction txid --tx tx1.tx)
+
+EPOCH=$(cardano-cli query tip --testnet-magic 42 | jq '.epoch')
 
 cardano-cli governance create-update-proposal \
             --out-file update-proposal-allegra \
