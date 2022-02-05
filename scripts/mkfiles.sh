@@ -282,10 +282,10 @@ cp "${SCRIPT_PATH}"/../templates/shelley_qa-alonzo-genesis.json shelley/genesis.
 # and K=10, but we'll keep long KES periods so we don't have to bother
 # cycling KES keys
 $SED -i shelley/genesis.spec.json \
-    -e 's/"slotLength": 1/"slotLength": 0.1/' \
+    -e 's/"slotLength": 1/"slotLength": 1/' \
     -e 's/"activeSlotsCoeff": 5.0e-2/"activeSlotsCoeff": 0.1/' \
     -e 's/"securityParam": 2160/"securityParam": 10/' \
-    -e 's/"epochLength": 432000/"epochLength": 10/' \
+    -e 's/"epochLength": 432000/"epochLength": 60/' \
     -e 's/"maxLovelaceSupply": 0/"maxLovelaceSupply": 1000000000000/' \
     -e 's/"minFeeA": 1/"minFeeA": 44/' \
     -e 's/"minFeeB": 0/"minFeeB": 155381/' \
